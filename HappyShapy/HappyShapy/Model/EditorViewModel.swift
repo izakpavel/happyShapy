@@ -18,6 +18,8 @@ class EditorViewModel : ObservableObject{
     // handling transformations
     @Published var activeElement: ShapeElement? = nil
     var originalElementPosition: CGPoint? = nil
+    var originalElementRotation: Double? = 0
+    var originalElementScale: CGSize? = nil
     
     private static let mainListWidth:CGFloat  = 360
     private static let mainListCollapsedWidth:CGFloat = 180
