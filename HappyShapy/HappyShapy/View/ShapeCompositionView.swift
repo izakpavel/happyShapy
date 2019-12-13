@@ -58,7 +58,6 @@ struct ShapeCompositionView: View {
                     .position(self.elementPosition(element))
                     .onTapGesture {
                         self.viewModel.activeElement = element
-                        self.viewModel.originalElementPosition = element.position
                     }
                 .opacity(self.needsRedraw ? 1.0 : 1.0)
                     // TODO decide if we will use degrees or radians .rotationEffect(Angle())
@@ -70,11 +69,16 @@ struct ShapeCompositionView: View {
                     .onChanged { value in
                         let dragOffset = value.translation
                         let elementOffset = self.positionChangeFromDragOffset(offset: dragOffset)
-                        self.viewModel.activeElement?.position = CGPoint(x: self.viewModel.originalElementPosition.x + elementOffset.width, y: self.viewModel.originalElementPosition.y + elementOffset.height)
-                        self.needsRedraw.toggle()
+                        if let originalPosition = self.viewModel.originalElementPosition {
+                            self.viewModel.activeElement?.position = CGPoint(x: originalPosition.x + elementOffset.width, y: originalPosition.y + elementOffset.height)
+                            self.needsRedraw.toggle() // handling updates
+                        }
+                        else {
+                            self.viewModel.originalElementPosition = self.viewModel.activeElement?.position
+                        }
                     }
                     .onEnded { value in
-                        // compute nearest index
+                        self.viewModel.originalElementPosition = nil
                     }
                 )
         }

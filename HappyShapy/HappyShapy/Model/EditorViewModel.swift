@@ -17,7 +17,7 @@ class EditorViewModel : ObservableObject{
     
     // handling transformations
     @Published var activeElement: ShapeElement? = nil
-    var originalElementPosition: CGPoint = CGPoint(x: 0, y: 0)
+    var originalElementPosition: CGPoint? = nil
     
     private static let mainListWidth:CGFloat  = 360
     private static let mainListCollapsedWidth:CGFloat = 160
