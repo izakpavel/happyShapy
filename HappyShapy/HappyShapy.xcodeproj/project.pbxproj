@@ -67,6 +67,7 @@
 		1B2D6FCC23A3998E006AB3F0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1B2D6FCE23A3A631006AB3F0 /* AddShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShapeView.swift; sourceTree = "<group>"; };
 		1B2D6FD023A3D863006AB3F0 /* TransformerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerView.swift; sourceTree = "<group>"; };
+		1B2D6FD223A3F64B006AB3F0 /* HappyShapy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyShapy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +118,7 @@
 		1B2D6F8823A374AA006AB3F0 /* HappyShapy */ = {
 			isa = PBXGroup;
 			children = (
+				1B2D6FD223A3F64B006AB3F0 /* HappyShapy.entitlements */,
 				1B2D6FBB23A374DC006AB3F0 /* Model */,
 				1B2D6FB923A374CF006AB3F0 /* View */,
 				1B2D6F8923A374AA006AB3F0 /* AppDelegate.swift */,
@@ -486,7 +488,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HappyShapy/HappyShapy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"HappyShapy/Preview Content\"";
 				DEVELOPMENT_TEAM = 429H9B36BJ;
 				ENABLE_PREVIEWS = YES;
@@ -497,6 +501,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = eu.nerdyak.HappyShapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -506,7 +511,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HappyShapy/HappyShapy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"HappyShapy/Preview Content\"";
 				DEVELOPMENT_TEAM = 429H9B36BJ;
 				ENABLE_PREVIEWS = YES;
@@ -517,6 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = eu.nerdyak.HappyShapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
