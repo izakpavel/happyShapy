@@ -92,7 +92,12 @@ struct MultiElementShape: Shape {
 struct ShapeElementView: View {
     @ObservedObject var element: ShapeElement
     var body: some View {
-        MultiElementShape(element: element)
+        let stroke = MultiElementShape(element: element)
+            .stroke(Color.primary, lineWidth: 2)
+        
+        return MultiElementShape(element: element)
+            .fill(Color("Shape"))
+            .overlay(stroke)
             .opacity(element.visible ? 1 : 0)
         // TODO style
     }

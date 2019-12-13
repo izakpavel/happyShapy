@@ -47,6 +47,9 @@ struct ElementListView: View {
                 ElementCellView(element: element, textVisible: self.viewModel.shapeListExpanded)
             }.onDelete(perform: delete)
         }
+        .listStyle(GroupedListStyle())
+        .listRowBackground(Color("Form"))
+        
     }
     
     private func delete(with indexSet: IndexSet) {

@@ -32,7 +32,7 @@ class ShapeComposition: ObservableObject {
     }
     
     func removeElement(_ element: ShapeElement) {
-        if let index = elements.index(of: element) {
+        if let index = elements.firstIndex(of: element) {
             elements.remove(at: index)
         }
     }

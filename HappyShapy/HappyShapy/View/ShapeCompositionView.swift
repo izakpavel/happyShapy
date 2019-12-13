@@ -33,7 +33,7 @@ struct ShapeCompositionView: View {
                     // TODO decide if we will use degrees or radians .rotationEffect(Angle())
             }
         }
-        .background(Color("Form"))
+        .background(Color("Canvas"))
         .frame(width: size.width, height: size.height)
     }
 }
