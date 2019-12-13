@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        EditorView(viewModel: EditorViewModel())
-            .environmentObject(ShapeComposition.debugComposition())
+        EditorView()
+            .environmentObject(EditorViewModel())
             .background(Color("Background"))
             .edgesIgnoringSafeArea(.all)
             .accentColor(Color("Action"))

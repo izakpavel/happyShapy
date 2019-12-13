@@ -12,16 +12,20 @@ import SwiftUI
 class EditorViewModel : ObservableObject{
     @Published var addDialogOpened: Bool = false
     @Published var shapeListExpanded: Bool = true
-    @Published var listWidth: CGFloat = 300
+    @Published var listWidth: CGFloat = EditorViewModel.mainListWidth
+    @Published var shapeComposition: ShapeComposition = ShapeComposition.debugComposition() // TODO change
+    
+    private static let mainListWidth:CGFloat  = 300
+    private static let mainListCollapsedWidth:CGFloat = 160
     
     func toggleListExpansion() {
         if self.shapeListExpanded {
             self.shapeListExpanded = false
-            self.listWidth = 100
+            self.listWidth = EditorViewModel.mainListCollapsedWidth
         }
         else {
             self.shapeListExpanded = true
-            self.listWidth = 300
+            self.listWidth = EditorViewModel.mainListWidth
         }
     }
     

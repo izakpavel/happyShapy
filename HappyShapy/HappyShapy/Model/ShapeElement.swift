@@ -20,23 +20,31 @@ enum ShapeElementKind : Int{
         return (self != .ellipse && self != .rectangle)
     }
     
+    func requiresCorners()->Bool {
+        return (self == .star || self == .polygon)
+    }
+    
+    func requiresCornerRadius()->Bool {
+        return (self == .roundedRectangle)
+    }
+    
     static func allKinds() -> [ShapeElementKind]{
         return [.ellipse, .rectangle, .roundedRectangle, .star, .polygon]
     }
 }
 
 
-class ShapeElement : Identifiable{
+class ShapeElement : Identifiable, ObservableObject{
     let id: UUID
-    let kind: ShapeElementKind
-    var position: CGPoint = CGPoint()
-    var size: CGSize = CGSize()
-    var rotation: Double = 0
-    var cornerRadius: CGFloat = 10
-    var corners: Int = 5
+    @Published var kind: ShapeElementKind
+    @Published var position: CGPoint = CGPoint(x: 0.5, y: 0.5)
+    @Published var size: CGSize = CGSize(width: 0.2, height: 0.2)
+    @Published var rotation: Double = 0
+    @Published var cornerRadius: CGFloat = 10
+    @Published var corners: CGFloat = 5
     
-    var name: String = "unnamed"
-    var visible: Bool = true
+    @Published var name: String = "unnamed"
+    @Published var visible: Bool = true
     
     init(kind: ShapeElementKind) {
         self.id = UUID()

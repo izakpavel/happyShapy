@@ -70,7 +70,7 @@ struct MultiElementShape: Shape {
     init(element: ShapeElement) {
         self.shapeKind = element.kind
         self.cornerRadius = element.cornerRadius
-        self.corners = element.corners
+        self.corners = Int(element.corners)
     }
     
     func path(in rect: CGRect) -> Path {

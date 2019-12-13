@@ -26,5 +26,9 @@ class ShapeComposition: ObservableObject {
                         ]
         return ShapeComposition(elements: elements)
     }
+    
+    func addElement(_ element: ShapeElement) {
+        self.elements.append(element)
+    }
 }
 

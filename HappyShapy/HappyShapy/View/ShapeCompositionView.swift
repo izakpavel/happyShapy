@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ShapeCompositionView: View {
-    @EnvironmentObject var shapeComposition: ShapeComposition
+    @EnvironmentObject var viewModel: EditorViewModel
     var size: CGSize
     
     func elementPosition(_ element: ShapeElement) -> CGPoint{
@@ -25,7 +25,7 @@ struct ShapeCompositionView: View {
     }
     
     var body: some View {
-        ForEach (self.shapeComposition.elements) { element in
+        ForEach (self.viewModel.shapeComposition.elements) { element in
             ShapeElementView(element: element)
                 .frame(width: self.elementWidth(element), height: self.elementHeight(element))
                 .position(self.elementPosition(element))

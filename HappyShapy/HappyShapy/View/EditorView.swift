@@ -8,16 +8,47 @@
 
 import SwiftUI
 
-struct ElementListView: View {
-    @EnvironmentObject var shapeComposition: ShapeComposition
+struct ElementCellView: View {
+    @ObservedObject var element: ShapeElement
+    var textVisible: Bool
     var body: some View {
-        List(shapeComposition.elements) { element in
+        
+        HStack {
+            MultiElementShape(element: element)
+                .frame(width: 44, height: 44)
+                .padding()
+            if (self.textVisible) {
+                Text(element.name)
+                    .lineLimit(1)
+            }
+            Spacer()
+            Button(action:{
+                self.element.visible.toggle()
+            }){
+                Image(systemName: element.visible ? "eye.fill" : "eye.slash")
+            }
+        }
+    }
+}
+
+struct ElementListView: View {
+    @EnvironmentObject var viewModel: EditorViewModel
+    var body: some View {
+        List(viewModel.shapeComposition.elements) { element in
             HStack {
                 MultiElementShape(element: element)
                     .frame(width: 44, height: 44)
                     .padding()
-                Text(element.name)
-                Image(systemName: element.visible ? "eye.fill" : "eye.slash")
+                if (self.viewModel.shapeListExpanded) {
+                    Text(element.name)
+                        .lineLimit(1)
+                }
+                Spacer()
+                Button(action:{
+                    element.visible.toggle()
+                }){
+                    Image(systemName: element.visible ? "eye.fill" : "eye.slash")
+                }
             }
         }
     }
@@ -25,8 +56,7 @@ struct ElementListView: View {
 
 
 struct EditorView: View {
-    @ObservedObject var viewModel: EditorViewModel
-    @EnvironmentObject var shapeComposition: ShapeComposition
+    @EnvironmentObject var viewModel: EditorViewModel
     var body: some View {
         ZStack {
             HStack {

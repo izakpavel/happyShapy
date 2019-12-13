@@ -9,4 +9,6 @@
 "editor.add" = "Add new shape";
 "button.confirm" = "OK";
 "button.discard" = "Close";
+"add.corners" = "Corners";
+"add.radius" = "Corner radius";
 

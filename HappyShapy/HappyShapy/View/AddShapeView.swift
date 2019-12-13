@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct AddShapeView: View {
-    @State var newElement: ShapeElement = ShapeElement(kind: .ellipse)
-    @State var sliderVal = 0.2
+    @EnvironmentObject var viewModel: EditorViewModel
+    @ObservedObject var newElement: ShapeElement = ShapeElement(kind: .ellipse)
     let elementsToChoose = AddShapeView.elementToChooseFrom()
     
     static func elementToChooseFrom()->[ShapeElement] {
@@ -24,18 +24,42 @@ struct AddShapeView: View {
                 .padding()
             HStack {
                 ForEach (self.elementsToChoose) { element in
-                    MultiElementShape(element: element)
-                        .fill(Color.secondary)
-                        .frame(width: 44, height: 44)
-                        .overlay(
-                            Image(systemName: "checkmark")
-                                .foregroundColor(Color("Action").opacity(element.kind == self.newElement.kind ? 0 : 1))
-                        )
+                    Button (action: {
+                        withAnimation {
+                            self.newElement.kind = element.kind
+                        }
+                    }){
+                        MultiElementShape(element: element)
+                            .fill(element.kind != self.newElement.kind ? Color.secondary : Color("Action"))
+                            .frame(width: 44, height: 44)
+                            .overlay(
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(Color.primary.opacity(element.kind != self.newElement.kind ? 0 : 1))
+                            )
+                    }
                 }
             }
             .padding()
-            if (newElement.kind.containParam()) {
-                Slider(value: self.$sliderVal, in: 0...1.0)
+            
+            if (newElement.kind.requiresCorners()) {
+                Group {
+                    HStack {
+                        Text("add.corners")
+                        Spacer()
+                    }
+                    Slider(value: self.$newElement.corners, in: 3...20)
+                }
+                .padding()
+            }
+            
+            if (newElement.kind.requiresCornerRadius()) {
+                Group {
+                    HStack {
+                        Text("add.radius")
+                        Spacer()
+                    }
+                    Slider(value: self.$newElement.cornerRadius, in: 0...50)
+                }
                 .padding()
             }
             
@@ -46,13 +70,14 @@ struct AddShapeView: View {
             
             HStack {
                 Button(action: {
-                    
+                    self.viewModel.closeAddDialog()
                 }) {
                     Text("button.discard")
                 }
                 
                 Button(action: {
-                    
+                    self.viewModel.shapeComposition.addElement(self.newElement)
+                    self.viewModel.closeAddDialog()
                 }) {
                     Text("button.confirm")
                 }
