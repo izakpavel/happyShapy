@@ -85,6 +85,7 @@ struct ShapeCompositionView: View {
             ForEach (self.viewModel.shapeComposition.elements) { element in
                 ShapeElementView(element: element)
                     .frame(width: self.elementWidth(element), height: self.elementHeight(element))
+                    .rotationEffect(Angle(degrees: element.rotation))
                     .position(self.elementPosition(element))
                     .onTapGesture {
                         self.viewModel.activeElement = element
@@ -93,6 +94,7 @@ struct ShapeCompositionView: View {
                     // TODO decide if we will use degrees or radians .rotationEffect(Angle())
             }
             TransformerView(size: self.transformerSize())
+                //.rotationEffect(Angle(degrees: self.viewModel.activeElement?.rotation ?? 0))
                 .position(self.transformerPosition())
                 .opacity(self.viewModel.activeElement != nil ? 1 : 0)
                 .simultaneousGesture( DragGesture(minimumDistance: 1, coordinateSpace: .local) // can be changed to simultaneous gesture to work with buttons
@@ -115,7 +117,8 @@ struct ShapeCompositionView: View {
                             case .rotation:
                                 let dragOffset = value.translation
                                 if let originalRotation = self.viewModel.originalElementRotation {
-                                    
+                                    self.viewModel.activeElement?.rotation = originalRotation+Double(dragOffset.width + dragOffset.height)
+                                    self.needsRedraw.toggle()
                                 }
                                 else {
                                     self.viewModel.originalElementRotation = self.viewModel.activeElement?.rotation
