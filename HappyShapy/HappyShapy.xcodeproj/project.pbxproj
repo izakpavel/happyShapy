@@ -15,6 +15,10 @@
 		1B2D6F9623A374AC006AB3F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B2D6F9423A374AC006AB3F0 /* LaunchScreen.storyboard */; };
 		1B2D6FA123A374AC006AB3F0 /* HappyShapyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FA023A374AC006AB3F0 /* HappyShapyTests.swift */; };
 		1B2D6FAC23A374AC006AB3F0 /* HappyShapyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FAB23A374AC006AB3F0 /* HappyShapyUITests.swift */; };
+		1B2D6FBD23A3757D006AB3F0 /* ShapeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FBC23A3757D006AB3F0 /* ShapeElement.swift */; };
+		1B2D6FBF23A375A0006AB3F0 /* ShapeComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FBE23A375A0006AB3F0 /* ShapeComposition.swift */; };
+		1B2D6FC123A37AF9006AB3F0 /* ShapeElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FC023A37AF9006AB3F0 /* ShapeElementView.swift */; };
+		1B2D6FC323A37B0B006AB3F0 /* ShapeCompositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FC223A37B0B006AB3F0 /* ShapeCompositionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		1B2D6FA723A374AC006AB3F0 /* HappyShapyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyShapyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B2D6FAB23A374AC006AB3F0 /* HappyShapyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyShapyUITests.swift; sourceTree = "<group>"; };
 		1B2D6FAD23A374AC006AB3F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B2D6FBC23A3757D006AB3F0 /* ShapeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeElement.swift; sourceTree = "<group>"; };
+		1B2D6FBE23A375A0006AB3F0 /* ShapeComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeComposition.swift; sourceTree = "<group>"; };
+		1B2D6FC023A37AF9006AB3F0 /* ShapeElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeElementView.swift; sourceTree = "<group>"; };
+		1B2D6FC223A37B0B006AB3F0 /* ShapeCompositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCompositionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,8 @@
 		1B2D6FB923A374CF006AB3F0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1B2D6FC023A37AF9006AB3F0 /* ShapeElementView.swift */,
+				1B2D6FC223A37B0B006AB3F0 /* ShapeCompositionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,6 +158,8 @@
 		1B2D6FBB23A374DC006AB3F0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1B2D6FBC23A3757D006AB3F0 /* ShapeElement.swift */,
+				1B2D6FBE23A375A0006AB3F0 /* ShapeComposition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,8 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2D6FBD23A3757D006AB3F0 /* ShapeElement.swift in Sources */,
+				1B2D6FC123A37AF9006AB3F0 /* ShapeElementView.swift in Sources */,
 				1B2D6F8A23A374AA006AB3F0 /* AppDelegate.swift in Sources */,
+				1B2D6FBF23A375A0006AB3F0 /* ShapeComposition.swift in Sources */,
 				1B2D6F8C23A374AA006AB3F0 /* SceneDelegate.swift in Sources */,
+				1B2D6FC323A37B0B006AB3F0 /* ShapeCompositionView.swift in Sources */,
 				1B2D6F8E23A374AA006AB3F0 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
