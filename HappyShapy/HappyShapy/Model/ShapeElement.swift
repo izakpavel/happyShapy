@@ -62,4 +62,10 @@ class ShapeElement : Identifiable, ObservableObject, Equatable{
         self.position = position
         self.size = size
     }
+    
+    func addOffset(offset: CGSize) {
+        let newX = self.position.x + offset.width
+        let newY = self.position.y + offset.height
+        self.position = CGPoint(x: newX, y: newY)
+    }
 }

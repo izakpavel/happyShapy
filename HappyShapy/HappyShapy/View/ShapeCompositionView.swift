@@ -8,8 +8,12 @@
 
 import SwiftUI
 
+
 struct ShapeCompositionView: View {
     @EnvironmentObject var viewModel: EditorViewModel
+    @State var needsRedraw: Bool = false
+    
+    
     var size: CGSize
     
     func elementPosition(_ element: ShapeElement) -> CGPoint{
@@ -40,6 +44,12 @@ struct ShapeCompositionView: View {
         return CGPoint()
     }
     
+    func positionChangeFromDragOffset(offset: CGSize) -> CGSize{
+        let xChange = offset.width/size.width
+        let yChange = offset.height/size.height
+        return CGSize(width: xChange, height: yChange)
+    }
+    
     var body: some View {
         ZStack {
             ForEach (self.viewModel.shapeComposition.elements) { element in
@@ -48,12 +58,25 @@ struct ShapeCompositionView: View {
                     .position(self.elementPosition(element))
                     .onTapGesture {
                         self.viewModel.activeElement = element
+                        self.viewModel.originalElementPosition = element.position
                     }
+                .opacity(self.needsRedraw ? 1.0 : 1.0)
                     // TODO decide if we will use degrees or radians .rotationEffect(Angle())
             }
             TransformerView(size: self.transformerSize())
                 .position(self.transformerPosition())
                 .opacity(self.viewModel.activeElement != nil ? 1 : 0)
+                .simultaneousGesture( DragGesture(minimumDistance: 1, coordinateSpace: .local) // can be changed to simultaneous gesture to work with buttons
+                    .onChanged { value in
+                        let dragOffset = value.translation
+                        let elementOffset = self.positionChangeFromDragOffset(offset: dragOffset)
+                        self.viewModel.activeElement?.position = CGPoint(x: self.viewModel.originalElementPosition.x + elementOffset.width, y: self.viewModel.originalElementPosition.y + elementOffset.height)
+                        self.needsRedraw.toggle()
+                    }
+                    .onEnded { value in
+                        // compute nearest index
+                    }
+                )
         }
         .background(Color("Canvas"))
         .frame(width: size.width, height: size.height)

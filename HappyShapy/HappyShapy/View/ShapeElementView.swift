@@ -29,6 +29,8 @@ struct PolygonShape: Shape {
                 let point = CGPoint(x: midX + midX*cos(angle), y: midY+midY*sin(angle))
                 path.addLine(to: point)
             }
+            
+            path.addLine(to: CGPoint(x: Double(rect.width), y: midY))
         }
     }
 }
@@ -58,6 +60,8 @@ struct StarShape: Shape {
                 let innerCorner = CGPoint(x: midX + midX*cos(angle)*innerRadius, y: midY+midY*sin(angle)*innerRadius)
                 path.addLine(to: innerCorner)
             }
+            
+            path.addLine(to: CGPoint(x: Double(rect.width), y: midY))
         }
     }
 }
