@@ -74,6 +74,8 @@ struct AddShapeView: View {
                     self.viewModel.closeAddDialog()
                 }) {
                     Text("button.discard")
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
                 }
                 Spacer()
                 Button(action: {
@@ -81,6 +83,8 @@ struct AddShapeView: View {
                     self.viewModel.closeAddDialog()
                 }) {
                     Text("button.confirm")
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
                 }
                 Spacer()
             }

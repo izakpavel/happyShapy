@@ -82,10 +82,10 @@ struct EditorView: View {
                                     .padding()
                             }
                         }
+                        //.padding()
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
                     }
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
-                    .padding()
-                    .padding(.top, 20)
+                    .padding(.top, 40)
                     ElementListView(shapeComposition: self.viewModel.shapeComposition)
                     HStack {
                         Spacer()
