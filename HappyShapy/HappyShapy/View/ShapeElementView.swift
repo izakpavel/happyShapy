@@ -90,9 +90,10 @@ struct MultiElementShape: Shape {
 }
 
 struct ShapeElementView: View {
-    var element: ShapeElement
+    @ObservedObject var element: ShapeElement
     var body: some View {
         MultiElementShape(element: element)
+            .opacity(element.visible ? 1 : 0)
         // TODO style
     }
 }

@@ -34,7 +34,8 @@ enum ShapeElementKind : Int{
 }
 
 
-class ShapeElement : Identifiable, ObservableObject{
+class ShapeElement : Identifiable, ObservableObject, Equatable{
+
     let id: UUID
     @Published var kind: ShapeElementKind
     @Published var position: CGPoint = CGPoint(x: 0.5, y: 0.5)
@@ -45,6 +46,10 @@ class ShapeElement : Identifiable, ObservableObject{
     
     @Published var name: String = "unnamed"
     @Published var visible: Bool = true
+    
+    static func == (lhs: ShapeElement, rhs: ShapeElement) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     init(kind: ShapeElementKind) {
         self.id = UUID()

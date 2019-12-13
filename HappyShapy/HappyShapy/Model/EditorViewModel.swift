@@ -15,7 +15,7 @@ class EditorViewModel : ObservableObject{
     @Published var listWidth: CGFloat = EditorViewModel.mainListWidth
     @Published var shapeComposition: ShapeComposition = ShapeComposition.debugComposition() // TODO change
     
-    private static let mainListWidth:CGFloat  = 300
+    private static let mainListWidth:CGFloat  = 360
     private static let mainListCollapsedWidth:CGFloat = 160
     
     func toggleListExpansion() {

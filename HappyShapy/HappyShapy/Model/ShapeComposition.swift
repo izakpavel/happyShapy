@@ -30,5 +30,11 @@ class ShapeComposition: ObservableObject {
     func addElement(_ element: ShapeElement) {
         self.elements.append(element)
     }
+    
+    func removeElement(_ element: ShapeElement) {
+        if let index = elements.index(of: element) {
+            elements.remove(at: index)
+        }
+    }
 }
 

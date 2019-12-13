@@ -69,18 +69,20 @@ struct AddShapeView: View {
                 .padding()
             
             HStack {
+                Spacer()
                 Button(action: {
                     self.viewModel.closeAddDialog()
                 }) {
                     Text("button.discard")
                 }
-                
+                Spacer()
                 Button(action: {
                     self.viewModel.shapeComposition.addElement(self.newElement)
                     self.viewModel.closeAddDialog()
                 }) {
                     Text("button.confirm")
                 }
+                Spacer()
             }
             .padding()
         }

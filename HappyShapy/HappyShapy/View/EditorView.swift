@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ElementCellView: View {
+    @EnvironmentObject var viewModel: EditorViewModel
     @ObservedObject var element: ShapeElement
     var textVisible: Bool
     var body: some View {
@@ -23,9 +24,13 @@ struct ElementCellView: View {
             }
             Spacer()
             Button(action:{
-                self.element.visible.toggle()
+                withAnimation {
+                    self.element.visible.toggle()
+                }
             }){
                 Image(systemName: element.visible ? "eye.fill" : "eye.slash")
+                    .background(Color("Form").opacity(0.00001))
+                    .padding()
             }
         }
     }
@@ -33,24 +38,18 @@ struct ElementCellView: View {
 
 struct ElementListView: View {
     @EnvironmentObject var viewModel: EditorViewModel
+    @ObservedObject var shapeComposition: ShapeComposition
+
     var body: some View {
-        List(viewModel.shapeComposition.elements) { element in
-            HStack {
-                MultiElementShape(element: element)
-                    .frame(width: 44, height: 44)
-                    .padding()
-                if (self.viewModel.shapeListExpanded) {
-                    Text(element.name)
-                        .lineLimit(1)
-                }
-                Spacer()
-                Button(action:{
-                    element.visible.toggle()
-                }){
-                    Image(systemName: element.visible ? "eye.fill" : "eye.slash")
-                }
-            }
+        List {
+            ForEach(self.shapeComposition.elements) { element in
+                ElementCellView(element: element, textVisible: self.viewModel.shapeListExpanded)
+            }.onDelete(perform: delete)
         }
+    }
+    
+    private func delete(with indexSet: IndexSet) {
+        indexSet.forEach { self.shapeComposition.elements.remove(at: $0) }
     }
 }
 
@@ -76,7 +75,7 @@ struct EditorView: View {
                     }
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
                     .padding()
-                    ElementListView()
+                    ElementListView(shapeComposition: self.viewModel.shapeComposition)
                     HStack {
                         Spacer()
                         Button (action:{
