@@ -64,11 +64,13 @@ struct StarShape: Shape {
 
 struct MultiElementShape: Shape {
     var shapeKind: ShapeElementKind
-    var mainParam: CGFloat
+    var cornerRadius: CGFloat
+    var corners: Int
     
     init(element: ShapeElement) {
         self.shapeKind = element.kind
-        self.mainParam = element.mainParam
+        self.cornerRadius = element.cornerRadius
+        self.corners = element.corners
     }
     
     func path(in rect: CGRect) -> Path {
@@ -78,12 +80,11 @@ struct MultiElementShape: Shape {
         case .rectangle:
             return Rectangle().path(in: rect)
         case .roundedRectangle:
-            let cornerRadius = rect.size.width*mainParam
-            return RoundedRectangle(cornerRadius: cornerRadius).path(in: rect)
+            return RoundedRectangle(cornerRadius: self.cornerRadius).path(in: rect)
         case .polygon:
-            return PolygonShape(corners: Int(mainParam)).path(in: rect)
+            return PolygonShape(corners: self.corners).path(in: rect)
         case .star:
-            return StarShape(corners: Int(mainParam)).path(in: rect)
+            return StarShape(corners: self.corners).path(in: rect)
         }
     }
 }

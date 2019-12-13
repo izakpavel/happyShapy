@@ -29,23 +29,18 @@ enum ShapeElementKind : Int{
 class ShapeElement : Identifiable{
     let id: UUID
     let kind: ShapeElementKind
-    var position: CGPoint
-    var size: CGSize
-    var rotation: Double
-    var mainParam: CGFloat // used for stuff like rounded corners
+    var position: CGPoint = CGPoint()
+    var size: CGSize = CGSize()
+    var rotation: Double = 0
+    var cornerRadius: CGFloat = 10
+    var corners: Int = 5
     
-    var name: String
-    var visible: Bool
+    var name: String = "unnamed"
+    var visible: Bool = true
     
-    init(kind: ShapeElementKind, mainParam: CGFloat) {
+    init(kind: ShapeElementKind) {
         self.id = UUID()
         self.kind = kind
-        self.position = CGPoint()
-        self.size = CGSize()
-        self.rotation = 0
-        self.mainParam = mainParam
-        self.name = ""
-        self.visible = true
     }
     
     init(kind: ShapeElementKind, position: CGPoint, size: CGSize) {
@@ -53,20 +48,5 @@ class ShapeElement : Identifiable{
         self.kind = kind
         self.position = position
         self.size = size
-        self.rotation = 0
-        self.mainParam = 5
-        self.name = ""
-        self.visible = true
-    }
-    
-    init(kind: ShapeElementKind) {
-        self.id = UUID()
-        self.kind = kind
-        self.position = CGPoint(x: 0.5, y: 0.5)
-        self.size = CGSize(width: 0.2, height: 0.2)
-        self.rotation = 0
-        self.mainParam = 5
-        self.name = ""
-        self.visible = true
     }
 }

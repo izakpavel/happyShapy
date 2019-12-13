@@ -14,7 +14,7 @@ struct AddShapeView: View {
     let elementsToChoose = AddShapeView.elementToChooseFrom()
     
     static func elementToChooseFrom()->[ShapeElement] {
-        return ShapeElementKind.allKinds().map { ShapeElement(kind: $0, mainParam: 5)}
+        return ShapeElementKind.allKinds().map { ShapeElement(kind: $0)}
     }
     
     var body: some View {
