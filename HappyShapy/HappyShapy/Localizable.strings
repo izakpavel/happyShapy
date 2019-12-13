@@ -11,4 +11,5 @@
 "button.discard" = "Close";
 "add.corners" = "Corners";
 "add.radius" = "Corner radius";
+"add.name" = "Enter name";
 

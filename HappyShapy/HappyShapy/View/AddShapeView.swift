@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AddShapeView: View {
     @EnvironmentObject var viewModel: EditorViewModel
-    @ObservedObject var newElement: ShapeElement = ShapeElement(kind: .ellipse)
+    @ObservedObject var newElement: ShapeElement = ShapeElement(kind: .ellipse, name: "")
     let elementsToChoose = AddShapeView.elementToChooseFrom()
     
     static func elementToChooseFrom()->[ShapeElement] {
@@ -62,6 +62,9 @@ struct AddShapeView: View {
                 }
                 .padding()
             }
+            
+            TextField("add.name", text: self.$newElement.name)
+                .padding()
             
             MultiElementShape(element: newElement)
                 .fill(Color.secondary)

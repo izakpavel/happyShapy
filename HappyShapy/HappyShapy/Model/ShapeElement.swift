@@ -44,23 +44,25 @@ class ShapeElement : Identifiable, ObservableObject, Equatable{
     @Published var cornerRadius: CGFloat = 10
     @Published var corners: CGFloat = 5
     
-    @Published var name: String = "unnamed"
+    @Published var name: String
     @Published var visible: Bool = true
     
     static func == (lhs: ShapeElement, rhs: ShapeElement) -> Bool {
         return lhs.id == rhs.id
     }
     
-    init(kind: ShapeElementKind) {
+    init(kind: ShapeElementKind, name: String = "unnamed") {
         self.id = UUID()
         self.kind = kind
+        self.name = name
     }
     
-    init(kind: ShapeElementKind, position: CGPoint, size: CGSize) {
+    init(kind: ShapeElementKind, position: CGPoint, size: CGSize, name: String) {
         self.id = UUID()
         self.kind = kind
         self.position = position
         self.size = size
+        self.name = name
     }
     
     func addOffset(offset: CGSize) {
