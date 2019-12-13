@@ -15,6 +15,8 @@ class EditorViewModel : ObservableObject{
     @Published var listWidth: CGFloat = EditorViewModel.mainListWidth
     @Published var shapeComposition: ShapeComposition = ShapeComposition.debugComposition() // TODO change
     
+    @Published var activeElement: ShapeElement? = nil
+    
     private static let mainListWidth:CGFloat  = 360
     private static let mainListCollapsedWidth:CGFloat = 160
     

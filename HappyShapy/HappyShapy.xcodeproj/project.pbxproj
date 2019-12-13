@@ -23,6 +23,7 @@
 		1B2D6FCB23A39330006AB3F0 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FCA23A39330006AB3F0 /* EditorView.swift */; };
 		1B2D6FCD23A3998E006AB3F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B2D6FCC23A3998E006AB3F0 /* Localizable.strings */; };
 		1B2D6FCF23A3A631006AB3F0 /* AddShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FCE23A3A631006AB3F0 /* AddShapeView.swift */; };
+		1B2D6FD123A3D863006AB3F0 /* TransformerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FD023A3D863006AB3F0 /* TransformerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1B2D6FCA23A39330006AB3F0 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		1B2D6FCC23A3998E006AB3F0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1B2D6FCE23A3A631006AB3F0 /* AddShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShapeView.swift; sourceTree = "<group>"; };
+		1B2D6FD023A3D863006AB3F0 /* TransformerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				1B2D6FC223A37B0B006AB3F0 /* ShapeCompositionView.swift */,
 				1B2D6FCA23A39330006AB3F0 /* EditorView.swift */,
 				1B2D6FCE23A3A631006AB3F0 /* AddShapeView.swift */,
+				1B2D6FD023A3D863006AB3F0 /* TransformerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				1B2D6FC123A37AF9006AB3F0 /* ShapeElementView.swift in Sources */,
 				1B2D6F8A23A374AA006AB3F0 /* AppDelegate.swift in Sources */,
 				1B2D6FC923A3930F006AB3F0 /* EditorViewModel.swift in Sources */,
+				1B2D6FD123A3D863006AB3F0 /* TransformerView.swift in Sources */,
 				1B2D6FBF23A375A0006AB3F0 /* ShapeComposition.swift in Sources */,
 				1B2D6FCF23A3A631006AB3F0 /* AddShapeView.swift in Sources */,
 				1B2D6F8C23A374AA006AB3F0 /* SceneDelegate.swift in Sources */,

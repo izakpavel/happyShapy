@@ -24,14 +24,36 @@ struct ShapeCompositionView: View {
         return element.size.height*size.height
     }
     
+    func transformerSize() -> CGSize{
+        if let activeElement = self.viewModel.activeElement {
+            let width = self.elementWidth(activeElement)
+            let height = self.elementHeight(activeElement)
+            return CGSize(width: width, height:height)
+        }
+        return CGSize()
+    }
+    
+    func transformerPosition() -> CGPoint{
+        if let activeElement = self.viewModel.activeElement {
+            return self.elementPosition(activeElement)
+        }
+        return CGPoint()
+    }
+    
     var body: some View {
         ZStack {
             ForEach (self.viewModel.shapeComposition.elements) { element in
                 ShapeElementView(element: element)
                     .frame(width: self.elementWidth(element), height: self.elementHeight(element))
                     .position(self.elementPosition(element))
+                    .onTapGesture {
+                        self.viewModel.activeElement = element
+                    }
                     // TODO decide if we will use degrees or radians .rotationEffect(Angle())
             }
+            TransformerView(size: self.transformerSize())
+                .position(self.transformerPosition())
+                .opacity(self.viewModel.activeElement != nil ? 1 : 0)
         }
         .background(Color("Canvas"))
         .frame(width: size.width, height: size.height)
