@@ -16,6 +16,7 @@ struct TransformerView: View {
         ZStack {
             Rectangle()
                 .stroke(Color("Action"), lineWidth: 2)
+                .background(Color.black.opacity(0.00001)) // hack to enable gestures over alpha area
             
             Circle()
                 .fill(Color("Action"))
