@@ -10,7 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader { geometry in
+            ShapeCompositionView(shapeComposition: ShapeComposition.debugComposition(), size: geometry.size)
+                .frame(width: geometry.size.width, height: geometry.size.height)
+        }
     }
 }
 
