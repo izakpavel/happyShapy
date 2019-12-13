@@ -26,6 +26,9 @@ class ShapeElement : Identifiable{
     var rotation: Double
     var mainParam: CGFloat // used for stuff like rounded corners
     
+    var name: String
+    var visible: Bool
+    
     init(kind: ShapeElementKind, position: CGPoint, size: CGSize) {
         self.id = UUID()
         self.kind = kind
@@ -33,6 +36,8 @@ class ShapeElement : Identifiable{
         self.size = size
         self.rotation = 0
         self.mainParam = 5
+        self.name = ""
+        self.visible = true
     }
     
     init(kind: ShapeElementKind) {
@@ -42,5 +47,7 @@ class ShapeElement : Identifiable{
         self.size = CGSize(width: 0.2, height: 0.2)
         self.rotation = 0
         self.mainParam = 5
+        self.name = ""
+        self.visible = true
     }
 }

@@ -10,10 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        GeometryReader { geometry in
-            ShapeCompositionView(shapeComposition: ShapeComposition.debugComposition(), size: geometry.size)
-                .frame(width: geometry.size.width, height: geometry.size.height)
-        }
+        EditorView(viewModel: EditorViewModel())
+            .environmentObject(ShapeComposition.debugComposition())
+            .background(Color("Background"))
+            .edgesIgnoringSafeArea(.all)
+            .accentColor(Color("Action"))
     }
 }
 

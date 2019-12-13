@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ShapeCompositionView: View {
-    var shapeComposition: ShapeComposition
+    @EnvironmentObject var shapeComposition: ShapeComposition
     var size: CGSize
     
     func elementPosition(_ element: ShapeElement) -> CGPoint{

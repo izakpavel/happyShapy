@@ -66,6 +66,11 @@ struct MultiElementShape: Shape {
     var shapeKind: ShapeElementKind
     var mainParam: CGFloat
     
+    init(element: ShapeElement) {
+        self.shapeKind = element.kind
+        self.mainParam = element.mainParam
+    }
+    
     func path(in rect: CGRect) -> Path {
         switch shapeKind {
         case .ellipse:
@@ -86,7 +91,7 @@ struct MultiElementShape: Shape {
 struct ShapeElementView: View {
     var element: ShapeElement
     var body: some View {
-        MultiElementShape(shapeKind: element.kind, mainParam: element.mainParam)
+        MultiElementShape(element: element)
         // TODO style
     }
 }

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  HappyShapy
+
+  Created by myf on 13/12/2019.
+  Copyright © 2019 nerdyak. All rights reserved.
+*/
+
+"editor.add" = "Add shape";
