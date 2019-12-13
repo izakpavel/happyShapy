@@ -24,4 +24,16 @@ class EditorViewModel : ObservableObject{
             self.listWidth = 300
         }
     }
+    
+    func openAddDialog() {
+        withAnimation {
+            self.addDialogOpened = true
+        }
+    }
+    
+    func closeAddDialog() {
+        withAnimation {
+            self.addDialogOpened = false
+        }
+    }
 }

@@ -22,6 +22,7 @@
 		1B2D6FC923A3930F006AB3F0 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FC823A3930F006AB3F0 /* EditorViewModel.swift */; };
 		1B2D6FCB23A39330006AB3F0 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FCA23A39330006AB3F0 /* EditorView.swift */; };
 		1B2D6FCD23A3998E006AB3F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B2D6FCC23A3998E006AB3F0 /* Localizable.strings */; };
+		1B2D6FCF23A3A631006AB3F0 /* AddShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D6FCE23A3A631006AB3F0 /* AddShapeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		1B2D6FC823A3930F006AB3F0 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
 		1B2D6FCA23A39330006AB3F0 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		1B2D6FCC23A3998E006AB3F0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		1B2D6FCE23A3A631006AB3F0 /* AddShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShapeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				1B2D6FC023A37AF9006AB3F0 /* ShapeElementView.swift */,
 				1B2D6FC223A37B0B006AB3F0 /* ShapeCompositionView.swift */,
 				1B2D6FCA23A39330006AB3F0 /* EditorView.swift */,
+				1B2D6FCE23A3A631006AB3F0 /* AddShapeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				1B2D6F8A23A374AA006AB3F0 /* AppDelegate.swift in Sources */,
 				1B2D6FC923A3930F006AB3F0 /* EditorViewModel.swift in Sources */,
 				1B2D6FBF23A375A0006AB3F0 /* ShapeComposition.swift in Sources */,
+				1B2D6FCF23A3A631006AB3F0 /* AddShapeView.swift in Sources */,
 				1B2D6F8C23A374AA006AB3F0 /* SceneDelegate.swift in Sources */,
 				1B2D6FC323A37B0B006AB3F0 /* ShapeCompositionView.swift in Sources */,
 				1B2D6F8E23A374AA006AB3F0 /* ContentView.swift in Sources */,

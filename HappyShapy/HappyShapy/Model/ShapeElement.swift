@@ -9,12 +9,20 @@
 import Foundation
 import SwiftUI
 
-enum ShapeElementKind {
-    case ellipse
-    case rectangle
-    case roundedRectangle
-    case star
-    case polygon
+enum ShapeElementKind : Int{
+    case ellipse = 0
+    case rectangle = 1
+    case roundedRectangle = 2
+    case star = 3
+    case polygon = 4
+    
+    func containParam()->Bool {
+        return (self != .ellipse && self != .rectangle)
+    }
+    
+    static func allKinds() -> [ShapeElementKind]{
+        return [.ellipse, .rectangle, .roundedRectangle, .star, .polygon]
+    }
 }
 
 
@@ -28,6 +36,17 @@ class ShapeElement : Identifiable{
     
     var name: String
     var visible: Bool
+    
+    init(kind: ShapeElementKind, mainParam: CGFloat) {
+        self.id = UUID()
+        self.kind = kind
+        self.position = CGPoint()
+        self.size = CGSize()
+        self.rotation = 0
+        self.mainParam = mainParam
+        self.name = ""
+        self.visible = true
+    }
     
     init(kind: ShapeElementKind, position: CGPoint, size: CGSize) {
         self.id = UUID()

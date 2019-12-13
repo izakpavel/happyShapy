@@ -28,41 +28,48 @@ struct EditorView: View {
     @ObservedObject var viewModel: EditorViewModel
     @EnvironmentObject var shapeComposition: ShapeComposition
     var body: some View {
-        HStack {
-            VStack {
-                Button (action:{
-                    // TODO
-                }){
+        ZStack {
+            HStack {
+                VStack {
+                    Button (action:{
+                        self.viewModel.openAddDialog()
+                    }){
+                        HStack {
+                            Image(systemName: "plus")
+                                .font(.title)
+                                .padding()
+                            if (viewModel.shapeListExpanded) {
+                                Text("editor.add")
+                                    .padding()
+                            }
+                        }
+                    }
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
+                    .padding()
+                    ElementListView()
                     HStack {
-                        Image(systemName: "plus")
-                            .font(.title)
-                            .padding()
-                        if (viewModel.shapeListExpanded) {
-                            Text("editor.add")
+                        Spacer()
+                        Button (action:{
+                            withAnimation {
+                                self.viewModel.toggleListExpansion()
+                            }
+                        }){
+                            Image(systemName: self.viewModel.shapeListExpanded ? "chevron.left" : "chevron.right")
                                 .padding()
                         }
                     }
                 }
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
-                .padding()
-                ElementListView()
-                HStack {
-                    Spacer()
-                    Button (action:{
-                        withAnimation {
-                            self.viewModel.toggleListExpansion()
-                        }
-                    }){
-                        Image(systemName: self.viewModel.shapeListExpanded ? "chevron.left" : "chevron.right")
-                            .padding()
-                    }
+                .background(Color("Form"))
+                .frame(width: self.viewModel.listWidth)
+                
+                GeometryReader { geometry in
+                    ShapeCompositionView(size: geometry.size)
                 }
             }
-            .background(Color("Form"))
-            .frame(width: self.viewModel.listWidth)
-            
-            GeometryReader { geometry in
-                ShapeCompositionView(size: geometry.size)
+            .blur(radius: self.viewModel.addDialogOpened ? 20 : 0)
+            if (self.viewModel.addDialogOpened) {
+                AddShapeView()
+                    .frame(width: 400, height: 400)
             }
         }
     }
