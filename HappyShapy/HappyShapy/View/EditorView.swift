@@ -16,6 +16,7 @@ struct ElementCellView: View {
         
         HStack {
             MultiElementShape(element: element)
+                .fill(Color.secondary)
                 .frame(width: 44, height: 44)
                 .padding()
             if (self.textVisible) {
@@ -56,10 +57,16 @@ struct ElementListView: View {
 
 struct EditorView: View {
     @EnvironmentObject var viewModel: EditorViewModel
+    
+    func shapeCompositionSize(availableSize: CGSize) -> CGSize{
+        let minDimension = min(availableSize.width, availableSize.height)
+        return CGSize(width: minDimension, height: minDimension)
+    }
+    
     var body: some View {
         ZStack {
-            HStack {
-                VStack {
+            HStack (alignment: .center){
+                VStack{
                     Button (action:{
                         self.viewModel.openAddDialog()
                     }){
@@ -75,6 +82,7 @@ struct EditorView: View {
                     }
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("Action")))
                     .padding()
+                    .padding(.top, 20)
                     ElementListView(shapeComposition: self.viewModel.shapeComposition)
                     HStack {
                         Spacer()
@@ -92,7 +100,7 @@ struct EditorView: View {
                 .frame(width: self.viewModel.listWidth)
                 
                 GeometryReader { geometry in
-                    ShapeCompositionView(size: geometry.size)
+                    ShapeCompositionView(size: self.shapeCompositionSize(availableSize: geometry.size))
                 }
             }
             .blur(radius: self.viewModel.addDialogOpened ? 20 : 0)

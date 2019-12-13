@@ -25,12 +25,16 @@ struct ShapeCompositionView: View {
     }
     
     var body: some View {
-        ForEach (self.viewModel.shapeComposition.elements) { element in
-            ShapeElementView(element: element)
-                .frame(width: self.elementWidth(element), height: self.elementHeight(element))
-                .position(self.elementPosition(element))
-                // TODO decide if we will use degrees or radians .rotationEffect(Angle())
+        ZStack {
+            ForEach (self.viewModel.shapeComposition.elements) { element in
+                ShapeElementView(element: element)
+                    .frame(width: self.elementWidth(element), height: self.elementHeight(element))
+                    .position(self.elementPosition(element))
+                    // TODO decide if we will use degrees or radians .rotationEffect(Angle())
+            }
         }
+        .background(Color("Form"))
+        .frame(width: size.width, height: size.height)
     }
 }
 
