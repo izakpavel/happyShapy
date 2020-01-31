@@ -21,7 +21,7 @@ class EditorViewModel : ObservableObject{
     var originalElementRotation: Double? = 0
     var originalElementScale: CGSize? = nil
     
-    private static let mainListWidth:CGFloat  = 360
+    private static let mainListWidth:CGFloat  = 366
     private static let mainListCollapsedWidth:CGFloat = 180
     
     func toggleListExpansion() {
